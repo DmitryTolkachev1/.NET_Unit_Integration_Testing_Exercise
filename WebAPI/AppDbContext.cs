@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using WebAPI.Models;
 
 namespace WebAPI;
@@ -9,6 +8,7 @@ public class AppDbContext : DbContext
     public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
     {
+        Database.EnsureCreated();
     }
     public DbSet<User> Users => Set<User>();
 

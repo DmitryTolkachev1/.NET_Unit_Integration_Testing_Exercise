@@ -20,7 +20,6 @@ public class UsersControllerTests : IAsyncLifetime
         _postgresContainer = new PostgreSqlBuilder()
             .WithDatabase("test-db")
             .WithImage("postgres:15")
-            .WithDockerEndpoint("unix:///run/podman/podman.sock")
             .WithCleanUp(true)
             .WithName("integration-tests-postgres")
             .Build();

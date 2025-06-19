@@ -1,0 +1,18 @@
+﻿version: '3.8'
+
+services:
+  test-db:
+    image: postgres:15
+    container_name: test-db
+    ports:
+      - "5002:5432"
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: devpass
+      POSTGRES_DB: testdb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
