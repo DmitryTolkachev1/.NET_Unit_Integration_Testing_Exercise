@@ -4,7 +4,7 @@ using FlaUI.UIA3;
 
 namespace UITest
 {
-    public class UITest1
+    public class UITest1 : IDisposable
     {
         private const string AppPath = @"C:\Assessment\Improvement Plan\TestProject1\.NET_Unit_Integration_Testing_Exercise\WinFormsApp\bin\Debug\net8.0-windows\WinFormsApp.exe";
         private Application _app;
@@ -14,6 +14,12 @@ namespace UITest
         {
             _app = Application.Launch(Path.GetFullPath(AppPath));
             _automation = new UIA3Automation();
+        }
+
+        public void Dispose()
+        {
+            _automation.Dispose();
+            _app.Close();
         }
 
         [Fact]
